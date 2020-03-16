@@ -1,0 +1,130 @@
+Notes
+
+1. What is react?
+- React is a javascript library that is used to produce HTML that is show to a user in a web browser
+- We are wrting indivdual components (views)
+	A. Components: snippets of code that produce HTML
+		1. Whenever you think component(view), think something that produces HTML
+		2. Write different components and mesh them together to make complex applications relatively simple
+
+// (In index.js file)
+2. JSX: A subset of JS, allows us to what looks like HTML in our JS but behind the scenes it is just JS
+	- We use JSX because this is what produces actual HTML that gets inserted to the DOM when we render this component (place this component onto the page)
+		1. Purpose: Have JS code to produce ultimately HTML. More clean to write code rather than the Vanilla JS
+	
+	- Why does it look like HTML at all? Why dont we have normal JS calls?
+		Answer: we don't have to write JSX if we don't want to but guarantee you want to
+
+	- JS Modules: Encapsulates the idea that all the code we write in seperarted files is siloed (or seperated) in other code write in other libraries that we install in our project
+				  code that is delcared in other files produced will have zero contact with this file unless we explicitly say hey i want to access
+
+
+// 351. Component Structure
+3. React knows how to render multiple components on the screen at one time. Does it really fast. Rather stuffing logic and all JSX that produces HTML, into a single component, we spread it out into different components, different components... with different purposes of the app
+
+	A. The search bar will be it's own component
+	B. Another component for the video player and the title description
+	C. One component that will render a list.
+	D. One componenet where it shows a preview of the video
+	E. One BIG OVERALL COMPONENT, that gets ALL COMPONENTS
+
+
+4. Index is the root of the application
+
+5. REMEMBER THIS: We always make one component per file. No matter how small it is
+
+
+// 352. Youtube Search API Signup
+
+6. You can go to this site to get API keys from google. API's such as youtube, google maps, etc
+
+7. Installing dependency
+	A. --save = "please save this to the package json file (list of all dependecies)"
+	B. Command: npm install --save youtube-api-search 
+
+
+// 353. Export Statements
+
+	A. Exporting modules
+	B. Classes
+	C. State
+
+8. ./ =  current directory
+9. ./components/search_bar = current directory, go to components folder, find the file
+
+// 354. Class-Based Components
+
+A. Class Component = Used to whenever you want a component to have some type of internal record keeping...(aware of itself and whats happened when its rendered)
+
+B. ES6 Class = not like a CSS class at all. Very different. Its a JS Object with properties and methods to it
+
+C. Whenever we use a class component...
+
+	A. How to write a class component
+		i.e. = class "name of component" extend React.Component
+
+	B. Must always define a render method
+
+
+// 355. Handling event user events
+
+A. User trigger events like moving the mouse around, clicking on an element
+B. Handling events in a react has two steps (Event Handler)
+	1. A function that is ran whenever the event occurs
+	2. Pass the event handler to the element that we want to monitor for events
+
+// 356. Introduction to State
+
+1. State is one of the hardest topics when learning react
+	- State is a plain JS object that is use to record in React to user events
+	- each class based components has its own state object
+	- whenever the component state is changed, the component immediately re-renders and also forces it's children to re-render
+
+
+// 360. Youtube Search Response
+
+1. Downwards Data Flow means that only the most parent component in the application should be responsible for fetching data. Via from API or FLUX Framework or REDUX itself even
+
+2. It would make sense if Index.js file should be having the logic to fetch the data
+
+
+// 361. Refactoring Functional Components to Class Components
+
+1. instead of const, you could use class for the App code block
+2. You can call the function for youtube search inside the app. It will render faster
+
+// 362. Props
+
+1. Passing data is refer to passing props. The data we are passing from App to VideoList is refer to as a prop. Videos to VideoList
+2. Anytime the app Re-Renders, like set state on the component, Video List will get the new list of videos as well
+3. When we use a functional component, this props object will arrive to the function
+
+// 363. Building Lists with maps
+
+1. stay away from for loops. JS 4
+2. use built in function like map
+
+// 364. List Item keys
+
+Console Warning:
+Warning: Each child in an array or iterator should have a unique "key" prop.
+I.E.: there is a stack of cards where the middle card needs to be updated but we don't know the specific card
+	if you had an ID for each card, the process will be much faster 
+
+1. use: return <VideoListItem key = { video.etag } video = { video } />
+	A. That gives each video a tag
+
+// 365. Video List Items
+
+1. const imageUrl = video.snippet.thumbnails.default.url;
+	A. This can get the image based on the properties from the Youtube Search API
+
+// 366. Detail Component and Template Strings
+
+
+// 367. Handling Null Props
+
+1. When the app first renders and runs the constructor function which sets the list of videos to an empty array and kicks off the request to get more videos
+2. In between the time it takes when the request is finish, the compnents still attempts to render itself, it doesnt pause "Oh im still getting data im gonna render"
+3. Some parent objects just cant fetch information fast enough to satisfy the needs of a child object
+4. To fix it, add a check in the detail component to make sure the video has been provided in the props before it attempts to render
