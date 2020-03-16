@@ -17,9 +17,12 @@ class App extends Component { // => E-6 Syntax (=>): instead of using the keywor
 		this.state = { 
 			videos: [],
 			selectedVideo: null 
-		}; 
+		};
+		this.videoSearch('Gopro Fusion'); 
+	}
 
-		YTSearch ({key: YOUTUBE_DATA_API_KEY, term: 'Nikes on my feet'}, (videosData) => {
+	videoSearch(term) {
+		YTSearch ({key: YOUTUBE_DATA_API_KEY, term: term }, (videosData) => {
 			this.setState({ 
 				videos: videosData,
 				selectedVideo: videosData[0]
@@ -30,7 +33,7 @@ class App extends Component { // => E-6 Syntax (=>): instead of using the keywor
 	render() { 
 		return ( 
 			<div> 
-				<SearchBar /> 
+				<SearchBar onSearchTermChange = { term => this.videoSearch(term)}/> 
 				<VideoDetail video = {this.state.selectedVideo } />
 				<VideoList 
 				onVideoSelect = { selectedVideo => this.setState({selectedVideo})} // function that manipulates another component
