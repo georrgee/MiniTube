@@ -128,3 +128,6 @@ I.E.: there is a stack of cards where the middle card needs to be updated but we
 2. In between the time it takes when the request is finish, the compnents still attempts to render itself, it doesnt pause "Oh im still getting data im gonna render"
 3. Some parent objects just cant fetch information fast enough to satisfy the needs of a child object
 4. To fix it, add a check in the detail component to make sure the video has been provided in the props before it attempts to render
+
+// 368. Video Selection
+

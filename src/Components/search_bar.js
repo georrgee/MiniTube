@@ -11,7 +11,7 @@ class SearchBar extends Component { // Plain JS Object
 
 	render() { // defining methods within a class
 		return (
-			<div> 
+			<div className = "search-bar" > 
 				<input 
 					value 	 = {this.state.term}
 					onChange = { event => this.setState({ term: event.target.value }) } 

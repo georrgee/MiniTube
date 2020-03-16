@@ -14,10 +14,16 @@ class App extends Component { // => E-6 Syntax (=>): instead of using the keywor
 	constructor(props) {
 		super(props);
 
-		this.state = { videos: [] }; // list of videos
+		this.state = { 
+			videos: [],
+			selectedVideo: null 
+		}; 
 
 		YTSearch ({key: YOUTUBE_DATA_API_KEY, term: 'Nikes on my feet'}, (videosData) => {
-			this.setState({ videos: videosData});
+			this.setState({ 
+				videos: videosData,
+				selectedVideo: videosData[0]
+			});
 		});
 	}
 
@@ -25,8 +31,10 @@ class App extends Component { // => E-6 Syntax (=>): instead of using the keywor
 		return ( 
 			<div> 
 				<SearchBar /> 
-				<VideoDetail video = {this.state.videos[0]} />
-				<VideoList videos = { this.state.videos } /> 
+				<VideoDetail video = {this.state.selectedVideo } />
+				<VideoList 
+				onVideoSelect = { selectedVideo => this.setState({selectedVideo})} // function that manipulates another component
+				videos = { this.state.videos } /> 
 			</div>
 		); 
 	}
