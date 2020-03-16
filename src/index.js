@@ -1,4 +1,5 @@
 
+import _ from 'lodash'
 import React, { Component } from 'react'; // go find the library called React, install in my application as dependency (installed in the node_modules), and assigned to the variable React
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -31,9 +32,12 @@ class App extends Component { // => E-6 Syntax (=>): instead of using the keywor
 	}
 
 	render() { 
+
+		const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300); // 300 in milliseconds
+
 		return ( 
 			<div> 
-				<SearchBar onSearchTermChange = { term => this.videoSearch(term)}/> 
+				<SearchBar onSearchTermChange = { videoSearch }/> 
 				<VideoDetail video = {this.state.selectedVideo } />
 				<VideoList 
 				onVideoSelect = { selectedVideo => this.setState({selectedVideo})} // function that manipulates another component

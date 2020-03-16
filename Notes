@@ -131,3 +131,8 @@ I.E.: there is a stack of cards where the middle card needs to be updated but we
 
 // 368. Video Selection
 
+// 371. Throttling Search Term Input
+
+1. Lodash library
+2. const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300); // 300 in milliseconds
+3. Trigger the search once every 300 milliseconds ^^^^^
