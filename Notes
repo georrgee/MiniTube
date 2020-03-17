@@ -136,3 +136,22 @@ I.E.: there is a stack of cards where the middle card needs to be updated but we
 1. Lodash library
 2. const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300); // 300 in milliseconds
 3. Trigger the search once every 300 milliseconds ^^^^^
+
+// 372. React Wrapup
+
+1. Import Statements
+	A. Whenever we have a file that we require in that we wrote, we give a relative 
+		path reference
+	B. Whenever we use a library, we just get the name of the library
+
+2. Callbacks
+	A. How often do we use callbacks?
+		Much less frequently to use callbacks
+		Great way for PARENT-CHILD communication
+
+3. State
+	A. Component level state
+		1. You can pass callbacks that changes the state
+		2. You can pass data from the state to other components
+		3. Whenever we change, i.e. Search Bar state, only triggers the search bar. Very Localized
+
