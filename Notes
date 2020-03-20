@@ -155,3 +155,20 @@ I.E.: there is a stack of cards where the middle card needs to be updated but we
 		2. You can pass data from the state to other components
 		3. Whenever we change, i.e. Search Bar state, only triggers the search bar. Very Localized
 
+374. What is Redux?
+
+1. Textbook: Predictable stable container for JS Applications
+
+375. More details on Redux?
+
+1. Redux - handle states for the data (for example, a book that is selected)
+2. React - handle states of the views
+
+1. Redux - state container - a collection of the data that describes the app, also include meta properties
+2. React - state container - display on the screen and interactive stuffing
+
+1. React will be in charge of showing the views and components
+2. Redux keeping track of the current state of (for example: counter, the number of times the button it has been pressed)
+
+Remember: 
+Redux contain the state of app or the data that tells the components of how or what they should render
